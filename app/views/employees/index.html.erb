@@ -1,3 +1,5 @@
+
+<%= link_to " Create New Employee",empnew_path, class:"bg-red-500 p-1 m-5 rounded-lg"%>
 <table class="min-w-full divide-y divide-gray-200">
   <thead class="bg-gray-50">
     <tr>
@@ -13,6 +15,7 @@
   <tbody class="bg-white divide-y divide-gray-200">
     <% @employees.each do |emp| %>
       <tr>
+        <%= emp.id %>
         <td class="px-6 py-4 whitespace-nowrap"><%= emp.first_name %></td>
         <td class="px-6 py-4 whitespace-nowrap"><%= emp.last_name %></td>
         <td class="px-6 py-4 whitespace-nowrap"><%= emp.email %></td>
@@ -22,8 +25,10 @@
         <td class="px-6 py-4 whitespace-nowrap">
           <%= link_to "Show", employee_path(emp), class: "text-blue-600 hover:text-blue-800" %>
           <%= link_to "Edit", edit_employee_path(emp), class: "text-green-600 hover:text-green-800" %>
-<%= link_to 'Delete', employee_path(emp), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-600 hover:text-red-800' %>
-        </td>
+<li><%= link_to "Destroy", employee_path(emp.id), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>        </td>
       </tr>
     <% end %>
   </tbody>

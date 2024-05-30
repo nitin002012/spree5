@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   get "contact"=>'pages#contact_us'
   get "pages1"=>'pages#pages1'
   root 'home#index'
+  get "empnew" => 'employees#new'
+  get "empindex" => 'employee#index'
 
-  
+
 
 
 
